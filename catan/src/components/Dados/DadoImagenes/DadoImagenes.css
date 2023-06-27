@@ -1,0 +1,23 @@
+.dado-imagen {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 75px;
+    height: 75px;
+    background-color: white;
+    border: 1px solid black;
+}
+
+.imagen-obtenida {
+    width: 50px;
+    height: 50px;
+}
+
+.imagen-desconocida {
+    font-size: 45px;
+    font-weight: bold;
+    color: black;
+    text-align: center;
+    margin-top: 15px;
+}

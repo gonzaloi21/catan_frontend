@@ -1,0 +1,57 @@
+.IntegrantesEquipo {
+    margin: auto;
+    width: 75%;
+}
+
+.nombre-integrante {
+    font-size: 30px;
+    font-weight: bold;
+    color: rgb(201, 78, 40);
+    margin: 25px 0;
+    text-align: justify;
+    border-bottom: 1px solid;
+}
+
+.acercade {
+    display: flex;
+}
+
+.text-acercade {
+    width: 100%;
+    padding: 0 10% 0 0;
+}
+
+.parrafo-acercade {
+    font-size: 18px;
+    color: black;
+    text-align: justify;
+}
+
+.github-acercade {
+    margin: 10px 0;
+    text-align: justify;
+}
+
+.github-integrante {
+    font-size: 20px;
+    font-weight: bold;
+    color: rgb(201, 78, 40);
+    margin: 0 0;
+}
+
+.icon-img {
+    height: 30px;
+    width: 30px;
+}
+
+
+.foto-integrante {
+    width: 40%;
+}
+
+.img-integrante {
+    object-fit: cover;
+    width: 100%;
+    border-radius: 5px;
+    height: 250px;
+}

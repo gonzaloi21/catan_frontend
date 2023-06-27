@@ -1,0 +1,45 @@
+.PaginaPrincipal {
+    background-color: white;
+    border-radius: 50px;
+    margin-top: 60px;
+}
+
+
+h5.pagina_principal_titulo {
+    font-size: 40px;
+    font-weight: bold;
+    color: rgb(201, 78, 40);
+    margin-bottom: 20px;
+    border-bottom: 1px solid;
+    margin-top: 30px;
+}
+
+.resumen_juego{
+
+    margin-top: 20px;
+    margin-bottom: 30px;
+}
+
+p {
+    color: black;
+    font-size: large;
+  }
+
+  .boton-partida-rapida {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+    background-color: #3498db;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease;
+    margin-bottom: 30px;
+    margin-top: 20px;
+  }
+  

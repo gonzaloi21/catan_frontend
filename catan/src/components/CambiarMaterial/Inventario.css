@@ -1,0 +1,56 @@
+.tabla-recursos {
+    width: 60%;
+    border-collapse: collapse;
+    background-color: #00aaff;
+  }
+  
+  .tabla-recursos caption {
+    font-weight: bold;
+    border-radius: 10px;
+  }
+  h3 {
+    font-size: 40px;
+    margin-top: 50px;
+  }
+  h5 {
+    font-size: 20px;
+    margin-bottom: 10px;
+    color: #fff;
+    border: black;
+  }
+
+  
+  .datos {
+    border-bottom: 1px solid #ccc;
+  }
+  
+  .dato-image img {
+    width: 80px;
+    height: 80px;
+    object-fit: contain;
+  }
+  
+  .dato-quantity {
+    text-align: center;
+    font-size: 60px;
+  }
+  
+  .boton-cambiar-recursos {
+    padding: 10px 20px;
+    background-color: #008000;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: medium;
+    color: #fff;
+    margin-right: 50px;
+  }
+  
+  .dato-button button:disabled {
+    background-color: red;
+    cursor: not-allowed;
+    font-size: medium;
+    margin-right: 50px;
+  }
+  

@@ -1,0 +1,45 @@
+.acerca_equipo {
+    width: 100%;
+    background-color: white;
+    border-radius: 50px;
+    margin-top: 60px;
+}
+
+.integrantes {
+    align-items: center;
+    display: inline-block;
+    width: 800px;
+    height: 350px;
+    margin-bottom: 80px;
+}
+
+h5.acerca_equipo_titulo {
+    font-size: 40px;
+    font-weight: bold;
+    color: rgb(181, 52, 13);
+    margin-bottom: 20px;
+    margin-top: 30px;
+    border-bottom: 1px solid;
+    
+}
+
+@media (max-width: 800px) {
+    .acerca_equipo {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 20px;
+    }
+
+    .integrantes {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        border-radius: 10px;
+        padding: 20px;
+        margin-top: 20px;
+        height: 400 px;
+        width: 500px;
+    }
+}

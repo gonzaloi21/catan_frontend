@@ -1,0 +1,22 @@
+td {
+    width: 100px;
+    height: 100px;
+    text-align: center;
+}
+
+td.casilla-madera {
+    background-color: blue;
+}
+
+.imagen-madera {
+    margin-top: 10px;
+    width: 60px;
+    height: 60px;
+}
+
+h6.madera-title {
+    text-align: center;
+    color: black;
+    font-size: 10px;
+    font-weight: bold;
+}
