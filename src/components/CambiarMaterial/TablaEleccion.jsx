@@ -18,12 +18,12 @@ useEffect(() => {
     try {
       const PORT = 3000;
 
-      const response_game = await fetch(`http://localhost:${PORT}/game`);
+      const response_game = await fetch(`https://catan-simple-backend.onrender.com/game`);
       const data_game = await response_game.json();
       const game_id = data_game.id;
 
 
-      const recursos = await fetch(`http://localhost:${PORT}/players/resources/${game_id}`);
+      const recursos = await fetch(`https://catan-simple-backend.onrender.com/players/resources/${game_id}`);
       const data_recurso = await recursos.json();
 
       const actualizarRecursos = () => {
@@ -51,7 +51,7 @@ useEffect(() => {
     console.log(resource1, resource2);
 
     const PORT = 3000;
-    const response_game = await fetch(`http://localhost:${PORT}/game`);
+    const response_game = await fetch(`https://catan-simple-backend.onrender.com/game`);
     const data_game = await response_game.json();
     const game_id = data_game.id;
 
@@ -59,7 +59,7 @@ useEffect(() => {
     const resource1_codificado = encodeURIComponent(resource1);
     const resource2_codificado = encodeURIComponent(resource2);
 
-    let url = `http://localhost:${PORT}/players/change`;
+    let url = `https://catan-simple-backend.onrender.com/players/change`;
 
     fetch(url, {
         method: "POST",

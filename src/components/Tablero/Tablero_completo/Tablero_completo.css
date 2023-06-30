@@ -3,6 +3,14 @@
     margin-bottom: 30px;
 }
 
+.tableros {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+
+}
+
 .contenedor-dados {
   display: flex;
   flex-direction: column;
@@ -21,15 +29,6 @@
   justify-content: center;
 }
 
-.fila-botones-inferior {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    margin-top: 10px;
-    margin-bottom: 10px;
-
-}
 .fila-botones-superior {
     margin-top: 10px;
     align-items: center;

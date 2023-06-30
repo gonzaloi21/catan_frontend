@@ -1,5 +1,6 @@
 .tabla-recursos {
-    width: 60%;
+    width: 40%;
+    margin-bottom: 80px;
     border-collapse: collapse;
     background-color: #00aaff;
   }

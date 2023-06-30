@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import "./Tablero.css";
+import "./Tablero/Tablero.css";
 import Casilla_Arcilla from "../Casillas/CasillaArcilla/CasillaArcilla";
 import Casilla_Madera from "../Casillas/CasillaMadera/CasillaMadera";
 import Casilla_Trigo from "../Casillas/CasillaTrigo/CasillaTrigo";

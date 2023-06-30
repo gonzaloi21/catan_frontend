@@ -1,10 +1,10 @@
 import React, {useState, useEffect} from "react";
-import Tablero from "./Tablero";
+import Tablero from "../Tablero/Tablero";
 import './Tablero_completo.css'
-import DadoImagenes from "../Dados/DadoImagenes/DadoImagenes";
-import DadoNumeros from "../Dados/DadoNumeros/DadoNumeros";
+import DadoImagenes from "../../Dados/DadoImagenes/DadoImagenes";
+import DadoNumeros from "../../Dados/DadoNumeros/DadoNumeros";
 import { Link } from "react-router-dom";
-
+import Inventario from "../../CambiarMaterial/Inventario";
 
 function Tablero_completo() {
   const [jugadorActual, setJugadorActual] = useState(null);
@@ -34,7 +34,7 @@ function Tablero_completo() {
     try {
       const PORT = 3000;
       const game_id = await ObtenerGameID();
-      const response_nombre = await fetch(`http://localhost:${PORT}/players/playername/${game_id}`);
+      const response_nombre = await fetch(`https://catan-simple-backend.onrender.com/players/playername/${game_id}`);
       const nombre = await response_nombre.text();
       setJugadorActual(nombre); 
     } catch (error) {
@@ -50,7 +50,7 @@ function Tablero_completo() {
   const ObtenerGameID = async () => {
     try {
       const PORT = 3000;
-      const response_game = await fetch(`http://localhost:${PORT}/game`);
+      const response_game = await fetch(`https://catan-simple-backend.onrender.com/game`);
       const data_game = await response_game.json();
       const game_id = data_game.id;
       return game_id;
@@ -73,7 +73,7 @@ function Tablero_completo() {
           setImagen(imagenes[2]);
         }
 
-        const postResponse = await fetch(`http://localhost:${PORT}/players/sumdice`, {
+        const postResponse = await fetch(`https://catan-simple-backend.onrender.com/players/sumdice`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -88,12 +88,46 @@ function Tablero_completo() {
         if (postResponse.ok) {
           console.log('POST request successful');
           setDadoLanzado(true);
+          window.location.reload();
+
         } else {
           console.log('POST request failed');
         }
       } catch (error) {
         console.log('Error:', error);
       }};
+  
+  const construirAldea = async () => {
+    try {
+      const PORT = 3000;
+      const game_id = await ObtenerGameID();
+      const recursos = await fetch(`https://catan-simple-backend.onrender.com/players/resources/${game_id}`);
+      const data_recurso = await recursos.json();
+      if (data_recurso.wood >= 3 && data_recurso.clay >= 2 && data_recurso.wheat >= 1) {
+        const postResponse = await fetch(`https://catan-simple-backend.onrender.com/board/`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            game_id,
+          }),
+        });
+        const data = await postResponse.json();
+        if (data.game_over) {
+          alert(`El juego ha terminado, el ganador es ${jugadorActual}`);
+          window.location.href = "/paginaprincipal";
+        } else {
+          window.location.reload();
+          alert(`Has construido una aldea`);
+        }
+      } else {
+        alert(`No tienes suficientes recursos para construir una aldea`);
+      }
+    } catch (error) {
+      console.log('Error:', error);
+    }
+  };
 
   const TerminarTurno = async () => {
     console.log('Terminar turno');
@@ -103,21 +137,25 @@ function Tablero_completo() {
        const game_id = await ObtenerGameID();
 
        //obtenemos el nombre del jugador saliente a partir del game_id
-       const response_nombre_saliente = await fetch(`http://localhost:${PORT}/players/playername/${game_id}`);
+       const response_nombre_saliente = await fetch(`https://catan-simple-backend.onrender.com/players/playername/${game_id}`);
        const nombre_saliente = await response_nombre_saliente.text();
 
-       const cambioturno = await fetch(`http://localhost:${PORT}/game/${game_id}`);
+       const cambioturno = await fetch(`https://catan-simple-backend.onrender.com/game/${game_id}`);
 
         //obtenemos el nombre del jugador entrante a partir del game_id
-        const response_nombre_entrante = await fetch(`http://localhost:${PORT}/players/playername/${game_id}`);
+        const response_nombre_entrante = await fetch(`https://catan-simple-backend.onrender.com/players/playername/${game_id}`);
         const nombre_entrante = await response_nombre_entrante.text();
 
        if (cambioturno.ok) {
-         alert(`${nombre_saliente} ha finalizado su turno, turno de ${nombre_entrante}`);
+          await fetch(`https://catan-simple-backend.onrender.com/players/${game_id}`);
+          alert(`${nombre_saliente} ha finalizado su turno, turno de ${nombre_entrante}`);
          setJugadorActual(nombre_entrante);
           setDadoLanzado(false);
           setNumero(null);
           setImagen(null);
+          window.location.reload();
+
+          
        } else {
          console.log('Error al cambiar de turno');
        }
@@ -127,9 +165,10 @@ function Tablero_completo() {
 
   return (
     <div className="tablero-completo">
-        <div className="tablero-solo">
-          <h2 className="titulo-tablero">Turno de {jugadorActual}</h2>
+      <h2> Turno de {jugadorActual}</h2>
+        <div className="tableros">
           <Tablero />
+          <Inventario />
         </div>
         {dadoLanzado && 
           (<div className="contenedor-dados">
@@ -141,12 +180,9 @@ function Tablero_completo() {
         }
         <div className="fila-botones-superior">
           {!dadoLanzado && <button className="boton-lanzar-dados" onClick={LanzarDadosBackend}>¡Lanzar Dados!</button>}
-          {/* <Link to={"/cambiar_recursos_paso1"} className="boton-cambiar">¡Cambiar Recursos!</Link> */}
-          {dadoLanzado && <button className="boton-cambiar" onClick={manejarBoton()}>¡Cambiar Recursos!</button>}
-          {dadoLanzado && <button className="boton-construir">¡Construir Aldea!</button>}
-        </div>
-        <div className="fila-botones-inferior"> 
+          {dadoLanzado && <button className="boton-construir" onClick={construirAldea}>¡Construir Aldea!</button>}
           {dadoLanzado && <button className="boton-terminar-turno" onClick={TerminarTurno}>Terminar Turno</button>}
+
         </div>
     </div>
   );

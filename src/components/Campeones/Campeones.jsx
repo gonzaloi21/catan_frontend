@@ -11,7 +11,7 @@ function TablaCampeones() {
       try {
         const PORT = 3000;
 
-        const campeones = await fetch(`http://localhost:${PORT}/users`);
+        const campeones = await fetch(`https://catan-simple-backend.onrender.com/users`);
         const data_campeones = await campeones.json();
 
         setListaCampeones(data_campeones);

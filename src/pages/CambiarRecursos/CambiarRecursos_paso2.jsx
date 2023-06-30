@@ -4,7 +4,7 @@ import TablaEleccion from '../../components/CambiarMaterial/TablaEleccion';
 
 function CambiarRecursos_paso2() {
     const volverAPaginaAnterior = () => {
-        window.location.href = "/cambiar_recursos_paso1";
+        window.location.href = "/partidarapida";
       }
     let resource1  = useParams();
     resource1 = resource1.nombre

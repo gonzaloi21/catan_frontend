@@ -17,12 +17,12 @@ function Inventario() {
       try {
         const PORT = 3000;
 
-        const response_game = await fetch(`http://localhost:${PORT}/game`);
+        const response_game = await fetch(`https://catan-simple-backend.onrender.com/game`);
         const data_game = await response_game.json();
         const game_id = data_game.id;
 
 
-        const recursos = await fetch(`http://localhost:${PORT}/players/resources/${game_id}`);
+        const recursos = await fetch(`https://catan-simple-backend.onrender.com/players/resources/${game_id}`);
         const data_recurso = await recursos.json();
 
         const actualizarRecursos = () => {
@@ -49,7 +49,6 @@ function Inventario() {
 
   return (
     <table className='tabla-recursos'>
-      <caption><h3>Inventario</h3></caption>
       <caption><h5>Puedes cambiar 3 recursos del mismo tipo por 1 a elección</h5></caption>
       <tbody>
         {listaRecursos.map((recurso) => (

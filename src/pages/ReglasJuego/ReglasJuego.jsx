@@ -2,7 +2,7 @@ import Navbar from '../../components/Navbar/Navbar'
 import './ReglasJuego.css'
 import LanzarDadosFrontend from '../../components/Dados/LanzarDados/LanzarDados'
 import Imagenes from '../../components/SimulacionConstruir/Imagenes'
-import GeneracionTablero from '../../components/Tablero/Generar_tablero'
+import GeneracionTablero from '../../components/Tablero/Generar_tablero/Generar_tablero'
 
 function ReglasJuego() {
 

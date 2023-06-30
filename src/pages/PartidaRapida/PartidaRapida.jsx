@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import Tablero_completo from '../../components/Tablero/Tablero_completo';
+import Tablero_completo from '../../components/Tablero/Tablero_completo/Tablero_completo';
 import './PartidaRapida.css'
 
 function PartidaRapida() {

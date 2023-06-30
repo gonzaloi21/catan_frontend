@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import TableroEjemplo from './TableroEjemplo';
+import TableroEjemplo from '../TableroEjemplo';
 import './Generar_tablero.css';
 
 function GeneracionTablero() {
